@@ -1,0 +1,29 @@
+﻿@model List<CMCS.Models.ApprovedClaimsModel>
+
+@{
+    ViewBag.Title = "Approved Claims";
+}
+<h2>Approved Claims</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Claim ID</th>
+            <th>Title</th>
+            <th>Amount</th>
+            <th>Approval Date</th>
+            <th>Lecturer</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var claim in Model)
+        {
+            <tr>
+                <td>@claim.ClaimId</td>
+                <td>@claim.ClaimTitle</td>
+                <td>@claim.ClaimAmount</td>
+                <td>@claim.ApprovalDate.ToShortDateString()</td>
+                <td>@claim.LecturerName</td>
+            </tr>
+        }
+    </tbody>
+</table>

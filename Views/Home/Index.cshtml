@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to Claims Management System</h1>
+
+    <div class="row mt-4">
+        <div class="col-md-6 offset-md-3">
+            <div class="list-group">
+                <a asp-controller="Home" asp-action="SubClaim" class="list-group-item list-group-item-action">
+                    Submit New Claim
+                </a>
+                <a asp-controller="Home" asp-action="ViewClaims" class="list-group-item list-group-item-action">
+                    View My Claims
+                </a>
+                <a asp-controller="Home" asp-action="VerifyClaims" class="list-group-item list-group-item-action">
+                    Verify Claims
+                </a>
+                <a asp-controller="Home" asp-action="ApprovedClaims" class="list-group-item list-group-item-action">
+                    View Approved Claims
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

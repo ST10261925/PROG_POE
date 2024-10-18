@@ -1,0 +1,46 @@
+﻿@model IEnumerable<CMCS.Models.ClaimForVerification>
+@{
+    ViewData["Title"] = "Verify Claims";
+}
+<h2>Claims to Verify</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Lecturer Name</th>
+            <th>Hours Worked</th>
+            <th>Hourly Rate</th>
+            <th>Notes</th>
+            <th>Document</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var claim in Model)
+        {
+            <tr>
+                <td>@claim.LecturerName</td>
+                <td>@claim.HoursWorked</td>
+                <td>@claim.HourlyRate</td>
+                <td>@claim.Notes</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(claim.DocumentFileName))
+                    {
+                        <a href="@Url.Content("~/uploads/" + claim.DocumentFileName)" target="_blank">View Document</a>
+                    }
+                    else
+                    {
+                        <span>No Document</span>
+                    }
+                </td>
+                <td>
+                    <form method="post" asp-action="ApproveClaim" asp-route-id="@claim.ClaimId">
+                        <button type="submit">Approve</button>
+                    </form>
+                    <form method="post" asp-action="RejectClaim" asp-route-id="@claim.ClaimId">
+                        <button type="submit">Reject</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

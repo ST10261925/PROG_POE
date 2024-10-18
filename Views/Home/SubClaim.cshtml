@@ -1,0 +1,39 @@
+﻿@model CMCS.Models.SubClaimModel
+@{
+    ViewData["Title"] = "Submit Claim";
+}
+
+<h2>Submit Your Claim</h2>
+<div class="form-container">
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label asp-for="HoursWorked">Hours Worked:</label>
+            <input asp-for="HoursWorked" class="form-control" type="number" min="1" required />
+            <span asp-validation-for="HoursWorked" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="HourlyRate">Hourly Rate:</label>
+            <input asp-for="HourlyRate" class="form-control" type="number" step="0.01" min="0" required />
+            <span asp-validation-for="HourlyRate" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Notes">Additional Notes:</label>
+            <textarea asp-for="Notes" class="form-control"></textarea>
+            <span asp-validation-for="Notes" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Document">Upload Supporting Document:</label>
+            <input type="file" asp-for="Document" class="form-control" accept=".pdf,.docx,.xlsx" required />
+            <span asp-validation-for="Document" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit Claim</button>
+    </form>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

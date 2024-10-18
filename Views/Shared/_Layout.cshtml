@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CMCS</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a asp-controller="Home" asp-action="SubClaim" class="nav-link">
+                                    Submit New Claim
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-controller="Home" asp-action="ViewClaims" class="nav-link">
+                                    View My Claims
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-controller="Home" asp-action="VerifyClaims" class="nav-link">
+                                    Verify Claims
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-controller="Home" asp-action="ApprovedClaims" class="nav-link">
+                                    View Approved Claims
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2024 - CMCS
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+<style>
+    .nav-link {
+        color: #333;
+        font-weight: 500;
+    }
+
+        .nav-link:hover {
+            background-color: #e9e9e9;
+            border-radius: 4px;
+        }
+
+    .navbar {
+        margin-bottom: 20px;
+    }
+</style>
