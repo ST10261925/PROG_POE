@@ -3,7 +3,7 @@
     public static class LocalClaimStorage
     {
         private static List<ClaimForVerification> claims = new List<ClaimForVerification>();
-        // Method to get a claim by its ID (make it nullable)
+        
         public static ClaimForVerification? GetClaimById(int id)
         {
             return claims.FirstOrDefault(c => c.ClaimId == id);
@@ -21,7 +21,7 @@
                 existingClaim.Status = updatedClaim.Status;
             }
         }
-        // In-memory storage for claims
+        
         private static List<ClaimForVerification> Claims = new List<ClaimForVerification>();
         // Method to add a new claim
         public static void AddClaim(ClaimForVerification claim)
@@ -38,12 +38,10 @@
         {
             return Claims.Where(c => c.Status == "Approved").ToList();
         }
-        // Method to get claims that need verification
         public static List<ClaimForVerification> GetClaimsToVerify()
         {
             return Claims.Where(c => c.Status == "Pending").ToList();
         }
-        // Method to update claim status
         public static void UpdateClaimStatus(int claimId, string status)
         {
             var claim = Claims.FirstOrDefault(c => c.Id == claimId);

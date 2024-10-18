@@ -2,17 +2,12 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 
 public class ClaimsController : Controller
 {
     private readonly IWebHostEnvironment _webHostEnvironment;
     private readonly ILogger<ClaimsController> _logger;
-    private const int MaxFileSize = 10 * 1024 * 1024; // 10 MB
+    private const int MaxFileSize = 10 * 1024 * 1024; // this here is 10 MB
     private static readonly string[] AllowedFileTypes = { ".pdf", ".docx", ".xlsx" };
 
     public ClaimsController(IWebHostEnvironment webHostEnvironment, ILogger<ClaimsController> logger)
@@ -26,7 +21,6 @@ public class ClaimsController : Controller
     {
         return View("SubClaim");
     }
-
     [HttpPost]
     public async Task<IActionResult> SubClaim(SubClaimModel model, IFormFile document)
     {

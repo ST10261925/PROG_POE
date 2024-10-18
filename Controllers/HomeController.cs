@@ -8,7 +8,7 @@ namespace CMCS.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IWebHostEnvironment _webHostEnvironment;
-        private const int MaxFileSize = 10 * 1024 * 1024; // 10MB max file size
+        private const int MaxFileSize = 10 * 1024 * 1024; 
         private readonly string[] AllowedFileTypes = { ".pdf", ".docx", ".xlsx" };
 
         public HomeController(ILogger<HomeController> logger, IWebHostEnvironment webHostEnvironment)
@@ -22,7 +22,7 @@ namespace CMCS.Controllers
             return View();
         }
 
-        // Add ViewClaims action method
+        
         public IActionResult ViewClaims()
         {
             try
@@ -36,7 +36,6 @@ namespace CMCS.Controllers
                 return RedirectToAction("Error");
             }
         }
-
         // Add ApprovedClaims action method
         public IActionResult ApprovedClaims()
         {
@@ -125,7 +124,6 @@ namespace CMCS.Controllers
                 return View(model);
             }
         }
-
         public IActionResult VerifyClaims()
         {
             try
@@ -142,7 +140,6 @@ namespace CMCS.Controllers
                 return RedirectToAction("Error");
             }
         }
-
         [HttpPost]
         public IActionResult ApproveClaim(int id)
         {

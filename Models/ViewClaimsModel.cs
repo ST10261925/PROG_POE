@@ -6,7 +6,6 @@
 
         public string ClaimTitle { get; set; } = string.Empty;
         public string ClaimStatus { get; set; } = "Pending"; 
-
         public decimal ClaimAmount { get; set; }
         public DateTime SubmissionDate { get; set; } = DateTime.Now;
     }
