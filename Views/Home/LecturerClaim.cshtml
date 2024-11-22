@@ -1,0 +1,30 @@
+﻿@model CMCS.Models.LecturerClaimModel
+
+@{
+    ViewData["Title"] = "Lecturer Claim";
+}
+
+<h2>Submit Claim</h2>
+<form method="post">
+    <label for="hoursWorked">Hours Worked:</label>
+    <input type="number" id="hoursWorked" name="HoursWorked" min="0" required />
+
+    <label for="hourlyRate">Hourly Rate:</label>
+    <input type="number" id="hourlyRate" name="HourlyRate" min="0" step="0.01" required />
+
+    <label for="totalPayment">Total Payment:</label>
+    <input type="text" id="totalPayment" name="TotalPayment" readonly />
+
+    <button type="submit">Submit</button>
+</form>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#hoursWorked, #hourlyRate').on('input', function () {
+            const hours = parseFloat($('#hoursWorked').val()) || 0;
+            const rate = parseFloat($('#hourlyRate').val()) || 0;
+            $('#totalPayment').val((hours * rate).toFixed(2));
+        });
+    });
+</script>
